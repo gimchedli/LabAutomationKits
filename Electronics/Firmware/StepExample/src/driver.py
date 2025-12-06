@@ -114,7 +114,7 @@ class RealMicrocontrollerService:
         return result
 
 
-    def set_state(self, stateA: bool = False, speedA: int = 0, dirA: bool = True, stepTime: int = 50000):
+    def set_state(self, stateA: bool = False, speedA: int = 0, dirA: bool = True, stepTime: int = 5000):
         """
         Set the state of pumps A, B, C and the LEDs
         """
@@ -161,7 +161,7 @@ class RealMicrocontrollerService:
 def main():
     """Main function for testing the service directly."""
     tile = RealMicrocontrollerService()
-    tile.set_state(stateA = True, speedA = 4096, dirA = True, stepTime = 50000)
+    tile.set_state(stateA = True, speedA = 4096, dirA = True, stepTime = 3000)
     
     tile.getLastStep()
     while not tile.check_for_step_done():

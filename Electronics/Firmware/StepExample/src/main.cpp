@@ -106,14 +106,14 @@ void setup() {
 }
 
 void loop() {
-
+  //Serial.println("wtf");
   cmdMessenger.feedinSerialData();
   if (currentStep.state)
   {
-    // Serial.println("Entering queue");
+    //Serial.println("Entering queue");
     if (!currentStep.done)
     {
-      // Serial.println("Step not done");
+      //Serial.println("Step not done");
       if (millis() - currentStep.stepStartTime >= currentStep.time)
       {
         currentStep.done = true;
@@ -124,7 +124,7 @@ void loop() {
     else
     {
       currentStep.state = false;
-      // Serial.println("Deactivating queue and clearing after done");
+      //Serial.println("Deactivating queue and clearing after done");
     }
   }
 
@@ -169,7 +169,7 @@ void receiveStep()
     cmdMessenger.readBinArg<unsigned long>();
 
     cmdMessenger.sendCmd(kError, "Busy");
-    // cmdMessenger.sendCmdBinArg<unsigned long>(currentStep.time);
+    //cmdMessenger.sendCmdBinArg<unsigned long>(currentStep.time);
   }
   else
   {
@@ -198,7 +198,7 @@ void receiveStep()
 
     cmdMessenger.sendCmdStart(kAcknowledge);
     cmdMessenger.sendCmdArg("Step");
-    // cmdMessenger.sendCmdBinArg<unsigned long>(currentStep.time);
+    cmdMessenger.sendCmdBinArg<unsigned long>(currentStep.time);
     cmdMessenger.sendCmdEnd();
   }
 }
