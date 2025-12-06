@@ -1,0 +1,48 @@
+{
+  "name": "LabAutomationKits ROS 2 (Humble) VNC",
+  "image": "tiryoh/ros2-desktop-vnc:humble",
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "username": "ubuntu",
+      "installZsh": false,
+      "upgradePackages": false
+    }
+  },
+  "runArgs": [
+    "--privileged",
+    "--init",
+    "--network=bridge",
+    "--shm-size=1g",
+    "-e", "DISPLAY=:1",
+    "-e", "USER=ubuntu",
+    "-e", "TZ=UTC",
+    "-e", "VNC_PW=vncpassword",
+    "-e", "RESOLUTION=1280x800",
+    "-e", "NO_VNC_PORT=6080",
+    "--group-add=dialout",
+    "--group-add=video",
+    "--device=/dev/ttyUSB0:/dev/ttyUSB0",
+    "--device=/dev/ttyACM0:/dev/ttyACM0",
+    "-p", "6080:80"
+  ],
+  "containerUser": "root",
+  "remoteUser": "ubuntu",
+  "overrideCommand": false,
+  "postCreateCommand": "bash .devcontainer/postCreate.sh",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/${localWorkspaceFolderBasename},type=bind,consistency=cached",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-iot.vscode-ros",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "esbenp.prettier-vscode",
+        "redhat.vscode-yaml"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    }
+  }
+}

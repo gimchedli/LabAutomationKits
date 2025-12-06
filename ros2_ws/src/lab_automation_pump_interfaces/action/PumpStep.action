@@ -1,0 +1,14 @@
+# Goal
+bool state
+int32 speed
+bool dir
+int32 duration_ms
+---
+# Result
+bool success
+string message
+---
+# Feedback
+float32 elapsed_s
+float32 progress
+string detail

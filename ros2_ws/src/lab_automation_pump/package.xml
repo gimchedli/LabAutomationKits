@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>lab_automation_pump</name>
+  <version>0.1.0</version>
+  <description>ROS 2 pump controller exposing action interface and state publishing.</description>
+  <maintainer email="lori@itu.dk">Alejandro Lorite Mora</maintainer>
+  <license>MIT</license>
+
+  <depend>rclpy</depend>
+  <depend>std_msgs</depend>
+  <depend>action_msgs</depend>
+  <depend>builtin_interfaces</depend>
+  <depend>lab_automation_pump_interfaces</depend>
+
+  <exec_depend>python3-serial</exec_depend>
+  <!-- <exec_depend>PyCmdMessenger</exec_depend> -->
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>
